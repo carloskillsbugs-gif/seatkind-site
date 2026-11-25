@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile under review — SeatKind</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-banner"><strong>SeatKind is opening soon in Modesto &amp; Turlock.</strong> Memberships aren't open yet.</div>
+  <header class="app-bar">
+    <a class="logo" href="../index.html" aria-label="SeatKind home"><img src="../assets/logo-horizontal.png" width="160" height="44" alt="SeatKind"></a>
+    <nav class="app-nav" aria-label="App">
+        <a href="feed.html">Feed</a>
+        <a href="discover.html">Discover</a>
+        <a href="match.html">Matches</a>
+        <a href="chat.html">Messages</a>
+        <a href="profile.html">Profile</a>
+        <a class="price-chip" href="../index.html#pricing">What it costs</a>
+    </nav>
+  </header>
+  <main class="wrap">
+
+    <ol class="flow-steps" aria-label="Sign-up steps">
+      <li>1. Price</li>
+      <li>2. Profile</li>
+      <li>3. Pay</li>
+      <li aria-current="step">4. Review</li>
+      <li>5. Matches</li>
+    </ol>
+    <p class="kicker">After you pay</p>
+    <h1>Profile under review</h1>
+    <p class="lede">Hang tight — a person still has to look at your 21+ file before you can match or chat. This is not an ID check and not a background check. In a live product, this page would wait for that review; the continue link below is only so you can preview the matches screen.</p>
+
+    <div class="review-panel">
+      <p class="status-pill">Under review</p>
+      <h2>What we're reviewing</h2>
+      <ul>
+        <li>Your attested date of birth (your profile will show a decade bucket, never an exact age)</li>
+        <li>Phone verification</li>
+        <li>A paid monthly membership (once billing is live, a Stripe subscription in good standing)</li>
+        <li>A selfie holding a handwritten note with today's date and your first name</li>
+        <li>Anything that does not add up in your photos or profile</li>
+      </ul>
+      <p>The selfie is only for this review. In the live product it would be deleted after the review is finished, as described in the draft Privacy Policy.</p>
+
+      <form class="card" id="selfie-form" style="box-shadow:none;margin:1rem 0 0;padding:0" action="#" method="post" onsubmit="return false;">
+        <div class="field">
+          <label for="selfie">Selfie with today's date</label>
+          <input id="selfie" name="selfie" type="file" accept="image/*" disabled>
+          <span class="hint">Hold a handwritten note with today's date and your first name. This draft does not upload or store a file.</span>
+        </div>
+        <div class="row">
+          <a class="btn" href="../opening-soon.html">Submit selfie (preview) — opening soon</a>
+          <a class="btn btn-secondary" href="match.html">Continue to matches (preview)</a>
+        </div>
+        <p class="status" id="selfie-status" role="status" hidden></p>
+      </form>
+    </div>
+
+    <p class="hint" style="margin-top:1.2rem">If this were live and your review was approved, and your subscription stayed active, you would go straight to available matches — or to an honest empty state or a table invite if the live pool was still small. Sample profiles would not appear as real matches. You can <a href="cancel.html">preview how cancel works</a> at any time.</p>
+
+  </main>
+  <nav class="bottom-nav" aria-label="App mobile"><a href="feed.html">Feed</a>
+      <a href="discover.html">Discover</a>
+      <a href="match.html">Matches</a>
+      <a href="chat.html">Messages</a>
+      <a href="profile.html">You</a></nav>
+
+  <script>
+    document.getElementById("selfie-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var s = document.getElementById("selfie-status");
+      s.hidden = false;
+      s.classList.add("is-visible");
+      s.textContent = "This draft does not upload a selfie or start a review. If it were live, your profile would stay under review until a person finished the 21+ check. Then you would go to available matches.";
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll("form").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); window.location.href = "../opening-soon.html"; });
+    });
+  </script>
+</body>
+</html>

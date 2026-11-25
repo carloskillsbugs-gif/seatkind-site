@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pay — SeatKind membership</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-banner"><strong>SeatKind is opening soon in Modesto &amp; Turlock.</strong> Memberships aren't open yet.</div>
+  <header class="app-bar">
+    <a class="logo" href="../index.html" aria-label="SeatKind home"><img src="../assets/logo-horizontal.png" width="160" height="44" alt="SeatKind"></a>
+    <nav class="app-nav" aria-label="App">
+        <a href="feed.html">Feed</a>
+        <a href="discover.html">Discover</a>
+        <a href="match.html">Matches</a>
+        <a href="chat.html">Messages</a>
+        <a href="profile.html">Profile</a>
+        <a class="price-chip" href="../index.html#pricing">What it costs</a>
+    </nav>
+  </header>
+  <main class="wrap">
+
+    <ol class="flow-steps" aria-label="Sign-up steps">
+      <li>1. Price</li>
+      <li>2. Profile</li>
+      <li aria-current="step">3. Pay</li>
+      <li>4. Review</li>
+      <li>5. Matches</li>
+    </ol>
+    <p class="kicker">Membership</p>
+    <h1>Start your monthly membership</h1>
+    <p class="lede">This screen is a preview of a monthly membership checkout. Memberships aren't open yet, and no card is charged here.</p>
+
+    <form class="card" id="pay-form" action="#" method="post" onsubmit="return false;">
+      <h2>What it costs, in full</h2>
+      <table class="costs-table">
+        <tbody>
+          <tr>
+            <th scope="row">Your price today</th>
+            <td class="price-cell"><strong>$15.00 / month</strong></td>
+          </tr>
+          <tr>
+            <th scope="row">Why $15</th>
+            <td>Founding membership for the first 100 members. Locked at $15 a month only while you stay continuously subscribed. If you cancel and later return, the standard $20/month price applies.</td>
+          </tr>
+          <tr>
+            <th scope="row">Standard price</th>
+            <td>$20.00 / month for new members after the first 100, and for anyone who rejoins after a cancel.</td>
+          </tr>
+          <tr>
+            <th scope="row">Restaurant meals</th>
+            <td>You pay the restaurant for your own food and drink. SeatKind does not add a table fee at launch.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="hint">This mockup shows the founding price as an example. A live checkout would only offer $15 while the first 100 founding sign-ups are still open, and would never show a fake countdown or a “was $20” tag.</p>
+
+      <div class="stripe-box" aria-label="Placeholder for Stripe Checkout">
+        <p><strong>Stripe Checkout (placeholder)</strong> — subscription mode. Card fields below are disabled on purpose. When live, Stripe would collect the card, create a Customer, and start a monthly subscription on the $15 founding Price (or the $20 Price).</p>
+        <div class="field">
+          <label for="email">Email for receipts and cancel instructions</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" disabled>
+        </div>
+        <div class="field">
+          <label for="card">Card number</label>
+          <input id="card" type="text" value="•••• •••• •••• ••••" disabled aria-disabled="true">
+        </div>
+        <div class="card-row two">
+          <div class="field">
+            <label for="exp">Expiration</label>
+            <input id="exp" type="text" value="MM / YY" disabled aria-disabled="true">
+          </div>
+          <div class="field">
+            <label for="cvc">CVC</label>
+            <input id="cvc" type="text" value="•••" disabled aria-disabled="true">
+          </div>
+        </div>
+        <p class="hint">In production this box is replaced by Stripe. SeatKind would not store full card numbers. Failed renewals would be retried by Stripe (dunning / Smart Retries), and you could update the card in the Customer Portal.</p>
+      </div>
+
+      <div class="disclosure" id="renew-disclosure">
+        <p><strong>Automatic renewal — please read this, next to the pay button.</strong></p>
+        <p>SeatKind is a monthly membership. If you continue, you will be charged <strong>$15.00 today</strong>, and then <strong>$15.00 every month</strong> until you cancel online. You can cancel anytime, with no phone call, through the billing portal (and in the app). If you cancel, you keep access through the period you already paid for; we do not generally prorate a mid-cycle cancel. After you join, we will email you a copy of these terms and how to cancel.</p>
+        <p>If you are a founding member and you let the subscription end, a later membership is billed at the standard <strong>$20.00 per month</strong>.</p>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" name="renew_consent" id="renew_consent" value="yes" required>
+        <span>I understand that SeatKind is a monthly membership that <strong>automatically renews at $15.00 per month</strong> (founding price) until I cancel online, and I agree to the <a href="../legal/terms-of-service.html">Terms of Service</a>. This box starts unchecked.</span>
+      </label>
+
+      <div class="pay-actions">
+        <a class="btn" href="../opening-soon.html">Start membership — $15/month — opening soon</a>
+        <a class="btn btn-secondary" href="cancel.html">See how cancel works</a>
+      </div>
+      <p class="hint">This button does not process a payment. It only continues this static preview to the under-review screen. A lawyer should review this disclosure under California's Automatic Renewal Law and federal ROSCA before anyone is billed.</p>
+      <p class="status" id="pay-status" role="status" hidden></p>
+    </form>
+
+  </main>
+  <nav class="bottom-nav" aria-label="App mobile"><a href="feed.html">Feed</a>
+      <a href="discover.html">Discover</a>
+      <a href="match.html">Matches</a>
+      <a href="chat.html">Messages</a>
+      <a href="profile.html">You</a></nav>
+
+  <script>
+    document.getElementById("pay-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (this.reportValidity && !this.reportValidity()) return;
+      if (!document.getElementById("renew_consent").checked) {
+        alert("Please tick the automatic-renewal box if you want to continue this preview. On a live page, we would not start a subscription without that consent.");
+        return;
+      }
+      window.location.href = "review.html";
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll("form").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); window.location.href = "../opening-soon.html"; });
+    });
+  </script>
+</body>
+</html>

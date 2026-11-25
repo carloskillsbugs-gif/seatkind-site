@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cancel membership — SeatKind</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-banner"><strong>SeatKind is opening soon in Modesto &amp; Turlock.</strong> Memberships aren't open yet.</div>
+  <header class="app-bar">
+    <a class="logo" href="../index.html" aria-label="SeatKind home"><img src="../assets/logo-horizontal.png" width="160" height="44" alt="SeatKind"></a>
+    <nav class="app-nav" aria-label="App">
+        <a href="feed.html">Feed</a>
+        <a href="discover.html">Discover</a>
+        <a href="match.html">Matches</a>
+        <a href="chat.html">Messages</a>
+        <a href="profile.html">Profile</a>
+        <a class="price-chip" href="../index.html#pricing">What it costs</a>
+    </nav>
+  </header>
+  <main class="wrap">
+
+    <p class="kicker">Membership</p>
+    <h1>Cancel anytime, online</h1>
+    <p class="lede">SeatKind is $20 per month standard, or $15 per month if you have a founding membership still locked in, and it renews automatically until you cancel. When billing is live, this screen and a Stripe Customer Portal link (also in your acknowledgment and receipt emails) are how you cancel or update your card — no phone call. A lawyer should review the final wording before anyone is billed. This draft does not charge or cancel anything.</p>
+    <div class="card">
+      <p><strong>Your membership (preview):</strong> Founding price $15/month, auto-renews, locked while you stay subscribed. You would keep access through the end of the period already paid for. If you cancel and later rejoin, the standard $20/month price would apply. When this is live, Stripe's Customer Portal would also let you update your card.</p>
+      <form id="cancel-form" action="#" method="post" onsubmit="return false;">
+        <label class="check">
+          <input type="checkbox" required>
+          <span>I want to cancel automatic renewal. I understand I keep access until the current period ends.</span>
+        </label>
+        <div class="row">
+          <a class="btn" href="../opening-soon.html">Cancel membership — opening soon</a>
+          <a class="btn btn-secondary" href="profile.html">Never mind</a>
+        </div>
+        <p class="status" id="cancel-status" role="status" hidden></p>
+      </form>
+      <p class="hint" style="margin-top:1rem">No phone call, no chat maze. One clearly labeled button, plus the Customer Portal when billing is live. That's the point of this screen.</p>
+    </div>
+
+  </main>
+  <nav class="bottom-nav" aria-label="App mobile"><a href="feed.html">Feed</a>
+      <a href="discover.html">Discover</a>
+      <a href="match.html">Matches</a>
+      <a href="chat.html">Messages</a>
+      <a href="profile.html">You</a></nav>
+  
+  <script>
+    document.getElementById("cancel-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (this.reportValidity && !this.reportValidity()) return;
+      var s = document.getElementById("cancel-status");
+      s.hidden = false;
+      s.classList.add("is-visible");
+      s.textContent = "This is a draft cancel path. Nothing was billed or canceled.";
+    });
+  </script>
+
+
+  <script>
+    document.querySelectorAll("form").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); window.location.href = "../opening-soon.html"; });
+    });
+  </script>
+</body>
+</html>

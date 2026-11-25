@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create your profile — SeatKind</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-banner"><strong>SeatKind is opening soon in Modesto &amp; Turlock.</strong> Memberships aren't open yet.</div>
+  <header class="app-bar">
+    <a class="logo" href="../index.html" aria-label="SeatKind home"><img src="../assets/logo-horizontal.png" width="160" height="44" alt="SeatKind"></a>
+    <nav class="app-nav" aria-label="App">
+        <a href="feed.html">Feed</a>
+        <a href="discover.html">Discover</a>
+        <a href="match.html">Matches</a>
+        <a href="chat.html">Messages</a>
+        <a href="profile.html">Profile</a>
+        <a class="price-chip" href="../index.html#pricing">What it costs</a>
+    </nav>
+  </header>
+  <main class="wrap">
+
+    <ol class="flow-steps" aria-label="Sign-up steps">
+      <li>1. Price</li>
+      <li aria-current="step">2. Profile</li>
+      <li>3. Pay</li>
+      <li>4. Review</li>
+      <li>5. Matches</li>
+    </ol>
+    <p class="kicker">Join SeatKind</p>
+    <h1>Create your profile</h1>
+    <p class="lede">Hang out, meet new people, vibe out. Friends, not dating. Membership is $20 a month, or $15 a month if you are one of the first 100 members and you stay subscribed. You'll see the full auto-renew terms on the next screen, next to pay. After you pay, a person reviews your profile for the 21+ check before you can match.</p>
+    <form class="card" id="signup-form" action="#" method="post" onsubmit="return false;">
+      <div class="field">
+        <label for="name">First name</label>
+        <input id="name" name="name" type="text" required maxlength="80" autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="dob">Date of birth</label>
+        <input id="dob" name="dob" type="date" required max="2005-11-25">
+        <span class="hint">You must be 21 or older. This is an attestation, not an ID check. Other members will see only a decade bucket (20s, 30s, 40s, 50s, or 60s) — never your exact age. For SeatKind, 20s means 21–29.</span>
+      </div>
+      <div class="field">
+        <label for="area">City or area</label>
+        <select id="area" name="area" required>
+          <option value="" selected disabled>Choose one</option>
+          <option>Modesto</option>
+          <option>Turlock</option>
+          <option>Modesto area</option>
+          <option>Turlock area</option>
+        </select>
+        <span class="hint">City or area only — we never show a precise location.</span>
+      </div>
+      <div class="field">
+        <label for="photo">Profile photo</label>
+        <input id="photo" name="photo" type="file" accept="image/*" disabled>
+        <span class="hint">A clear, recent photo of you. This draft does not upload or store a file.</span>
+      </div>
+      <div class="field">
+        <label for="interests">Interests</label>
+        <textarea id="interests" name="interests" required placeholder="Coffee, hikes, game nights…"></textarea>
+      </div>
+      <div class="field">
+        <label for="want">The kind of friend you want</label>
+        <textarea id="want" name="want" required placeholder="Someone to join a Saturday hike, or a weekly coffee…"></textarea>
+      </div>
+      <div class="field">
+        <span class="label">I'm open to meeting (for friendship)</span>
+        <div class="choices">
+          <label><input type="radio" name="open_to" value="anyone" required> Anyone</label>
+          <label><input type="radio" name="open_to" value="women"> Women</label>
+          <label><input type="radio" name="open_to" value="men"> Men</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">Age range of friends you'd like to meet</span>
+        <div class="decade-choices">
+          <label><input type="checkbox" name="decades" value="20s"> 20s <span class="hint" style="display:inline;font-weight:600">(21–29)</span></label>
+          <label><input type="checkbox" name="decades" value="30s"> 30s</label>
+          <label><input type="checkbox" name="decades" value="40s"> 40s</label>
+          <label><input type="checkbox" name="decades" value="50s"> 50s</label>
+          <label><input type="checkbox" name="decades" value="60s"> 60s</label>
+        </div>
+        <span class="hint">Pick one or more decades. SeatKind is only for adults 21 and older, so 20s here means 21–29. We never show or match on an exact age.</span>
+      </div>
+      <div class="field">
+        <label for="phone">Phone number</label>
+        <input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="(209) 555-0100">
+        <span class="hint">We'll send a one-time code. In this draft, no text is sent.</span>
+      </div>
+      <label class="check">
+        <input type="checkbox" name="age_attest" value="yes" required>
+        <span>I attest that I am 21 or older, and the date of birth I entered is true.</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="terms" value="yes" required>
+        <span>I have read and agree to the <a href="../legal/terms-of-service.html">Terms of Service</a> and the <a href="../legal/privacy-policy.html">Privacy Policy</a> (drafts, attorney review required). This box starts unchecked.</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="pledge" value="yes" required>
+        <span>SeatKind Approved pledge: I agree to follow the law and SeatKind community rules (friends, not dating; public tables only; keep chats in the app; no harassment). I understand this pledge is not an ID check, not a background check, and does not mean I or anyone else is safe to meet.</span>
+      </label>
+      <div class="row">
+        <a class="btn" href="../opening-soon.html">Continue to pay — opening soon</a>
+        <a class="btn btn-secondary" href="../index.html#pricing">See what it costs</a>
+      </div>
+      <p class="status" id="form-status" role="status" hidden></p>
+    </form>
+
+  </main>
+  <nav class="bottom-nav" aria-label="App mobile"><a href="feed.html">Feed</a>
+      <a href="discover.html">Discover</a>
+      <a href="match.html">Matches</a>
+      <a href="chat.html">Messages</a>
+      <a href="profile.html">You</a></nav>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (this.reportValidity && !this.reportValidity()) return;
+      var picked = this.querySelectorAll('input[name="decades"]:checked');
+      if (!picked.length) {
+        alert("Please pick at least one age-range decade. The minimum is 21.");
+        return;
+      }
+      window.location.href = "pay.html";
+    });
+  </script>
+
+
+  <script>
+    document.querySelectorAll("form").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); window.location.href = "../opening-soon.html"; });
+    });
+  </script>
+</body>
+</html>

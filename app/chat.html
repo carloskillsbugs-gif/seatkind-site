@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages — SeatKind</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="draft-banner"><strong>SeatKind is opening soon in Modesto &amp; Turlock.</strong> Memberships aren't open yet.</div>
+  <header class="app-bar">
+    <a class="logo" href="../index.html" aria-label="SeatKind home"><img src="../assets/logo-horizontal.png" width="160" height="44" alt="SeatKind"></a>
+    <nav class="app-nav" aria-label="App">
+        <a href="feed.html">Feed</a>
+        <a href="discover.html">Discover</a>
+        <a href="match.html">Matches</a>
+        <a href="chat.html" aria-current="page">Messages</a>
+        <a href="profile.html">Profile</a>
+        <a class="price-chip" href="../index.html#pricing">What it costs</a>
+    </nav>
+  </header>
+  <main class="wrap">
+
+    <p class="kicker">Messages</p>
+    <h1>Chat in the app</h1>
+    <p class="lede">Early conversation stays on SeatKind. This thread is a layout example using a sample profile — not a real conversation, and no messages are sent. You can report or block; we review every report within 24 hours.</p>
+    <div class="chat-shell">
+      <aside class="card thread-list" aria-label="Conversations">
+        <a class="thread" href="chat.html" aria-current="true">
+          <span class="sample-badge">Sample</span>
+          <strong>Jordan A.</strong>
+          <span>Modesto · Want to grab coffee this week?</span>
+        </a>
+        <p class="hint" style="padding:0.4rem 0.75rem">Other threads would appear here after real mutual matches. Sample profiles are not real members.</p>
+      </aside>
+      <section class="card convo" aria-label="Conversation with Jordan, sample">
+        <p><span class="sample-badge">Sample profile</span> <strong>Jordan A.</strong> · Modesto area</p>
+        <div class="bubbles">
+          <div class="bubble">Hey — if you ever want a quiet coffee and a walk, I'm in. Friends only.</div>
+          <div class="bubble mine">That sounds just right. Same here, just friends.</div>
+          <div class="bubble">Want to grab coffee this week? We could use a table invite and meet in a public cafe in Modesto.</div>
+        </div>
+        <form class="composer" id="composer" action="#" method="post" onsubmit="return false;">
+          <label class="visually-hidden" for="msg" style="position:absolute;left:-999px">Message</label>
+          <input id="msg" name="msg" type="text" placeholder="Write a message (draft — nothing is sent)">
+          <a class="btn" href="../opening-soon.html">Send — opening soon</a>
+        </form>
+        <div class="row" style="margin-top:0.8rem">
+          <button class="btn btn-secondary" type="button" id="invite-btn">Invite to a table</button>
+          <button class="btn btn-danger" type="button" id="report-btn">Report or block</button>
+        </div>
+        <div class="report-box" id="invite-box" hidden>
+          <h2>Table invite</h2>
+          <p>Invite Jordan to a public restaurant table in the Modesto area. The exact venue is arranged by SeatKind; profiles never show a precise location or a home address. A host is there with you.</p>
+          <p class="hint">Draft only — this does not send an invite or book a restaurant.</p>
+        </div>
+        <div class="report-box" id="report-box" hidden>
+          <h2>Report or block</h2>
+          <p>Tell us what happened. We review every report within 24 hours. If you are in immediate danger, contact local emergency services first.</p>
+          <div class="field">
+            <label for="reason">What do you want to report?</label>
+            <textarea id="reason" placeholder="A short description"></textarea>
+          </div>
+          <div class="row">
+            <button class="btn btn-danger" type="button" id="report-send">Submit report (draft)</button>
+            <button class="btn btn-secondary" type="button" id="block-send">Block this profile (draft)</button>
+          </div>
+          <p class="status" id="report-status" role="status" hidden></p>
+        </div>
+      </section>
+    </div>
+
+  </main>
+  <nav class="bottom-nav" aria-label="App mobile"><a href="feed.html">Feed</a>
+      <a href="discover.html">Discover</a>
+      <a href="match.html">Matches</a>
+      <a href="chat.html" aria-current="page">Messages</a>
+      <a href="profile.html">You</a></nav>
+  
+  <script>
+    document.getElementById("composer").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("This chat is a draft mockup. Nothing was sent.");
+    });
+    document.getElementById("invite-btn").addEventListener("click", function () {
+      var box = document.getElementById("invite-box");
+      box.hidden = !box.hidden;
+    });
+    document.getElementById("report-btn").addEventListener("click", function () {
+      var box = document.getElementById("report-box");
+      box.hidden = !box.hidden;
+    });
+    function draftNote(id, text) {
+      var s = document.getElementById(id);
+      s.hidden = false;
+      s.classList.add("is-visible");
+      s.textContent = text;
+    }
+    document.getElementById("report-send").addEventListener("click", function () {
+      draftNote("report-status", "Draft only: no report was sent. If this were live, we would review it within 24 hours.");
+    });
+    document.getElementById("block-send").addEventListener("click", function () {
+      draftNote("report-status", "Draft only: no one was blocked. If this were live, the profile would be blocked and you could add a report.");
+    });
+  </script>
+
+
+  <script>
+    document.querySelectorAll("form").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); window.location.href = "../opening-soon.html"; });
+    });
+  </script>
+</body>
+</html>
